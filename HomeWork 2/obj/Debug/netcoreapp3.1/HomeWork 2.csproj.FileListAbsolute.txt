@@ -1,0 +1,20 @@
+D:\Project\HomeWork 2\HomeWork 2\bin\Debug\netcoreapp3.1\HomeWork 2.exe
+D:\Project\HomeWork 2\HomeWork 2\bin\Debug\netcoreapp3.1\HomeWork 2.deps.json
+D:\Project\HomeWork 2\HomeWork 2\bin\Debug\netcoreapp3.1\HomeWork 2.runtimeconfig.json
+D:\Project\HomeWork 2\HomeWork 2\bin\Debug\netcoreapp3.1\HomeWork 2.runtimeconfig.dev.json
+D:\Project\HomeWork 2\HomeWork 2\bin\Debug\netcoreapp3.1\HomeWork 2.dll
+D:\Project\HomeWork 2\HomeWork 2\bin\Debug\netcoreapp3.1\HomeWork 2.pdb
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.csproj.AssemblyReference.cache
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2_MarkupCompile.cache
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2_MarkupCompile.lref
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.g.resources
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.AssemblyInfoInputs.cache
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.AssemblyInfo.cs
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.csproj.CoreCompileInputs.cache
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.dll
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.pdb
+D:\Project\HomeWork 2\HomeWork 2\obj\Debug\netcoreapp3.1\HomeWork 2.genruntimeconfig.cache
