@@ -6,15 +6,13 @@ namespace HomeWork_2
 {
     class Town
     {
-        public List<Disk> disk = new List<Disk>();
+        public List<int> sizeDisks = new List<int>();
         public int x { get; set; }
         public int lengthTown { get;  } = 150;
         public int CountDisk { get; set; } = 0;
 
+        public int num { get; set; }
+
     }
 
-    class Disk
-    {
-        public int size { get; set; }
-    }
 }

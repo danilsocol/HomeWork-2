@@ -144,79 +144,67 @@ namespace HomeWork_2
 
         private void BtnTown_Click(object sender, RoutedEventArgs e)
         {
-            Town Town1 = new Town() { x = 50 };
-            Town Town2 = new Town() { x = 300 };
-            Town Town3 = new Town() { x = 550 };
-            Disk disk1 = new Disk() { size = 1 };
-            Disk disk2 = new Disk() { size = 2 };
-            Disk disk3 = new Disk() { size = 3 };
-
-            Town1.disk.Add(disk1);
-            Town1.disk.Add(disk2);
-            Town1.disk.Add(disk3);
+            Town[] towns = new Town[3];
+            towns[0] = new Town() { x = 50 , num = 1};
+            towns[1] = new Town() { x = 300, num = 2 };
+            towns[2] = new Town() { x = 550, num = 3 };
+            for (int i = 3; i >= 1; i--)
+            {
+                towns[0].sizeDisks.Add(i);
+            }
 
             image.Children.Clear();
             x = image.Width;
             y = image.Height;
 
-            DrawTown(Town1);
-            DrawTown(Town2);
-            DrawTown(Town3);
-            for (int i = 0; i < Town1.disk.Count; i++)
+            for (int i = 0; i < towns.Length; i++)
             {
-                DrawDisks(Town1, Town1.disk[i]);
+                DrawTown(towns[i]);
             }
 
-
-           // MoveDisks(Town1, Town2, Town3, 3);
-
-
-            Town1.CountDisk -= 3; //кастыль
-            Town1.disk.Clear();
-            var images1 = image.Children.OfType<Image>().ToList(); //Все элементы типа Image в нашем подопытном canvas1
-
-            DeleteDisks();
-
-            for (int i = 0; i < Town1.disk.Count; i++)
+            for (int i = 0; i < towns.Length; i++)
             {
-                DrawDisks(Town1, Town1.disk[i]);
-            }
-            for (int i = 0; i < Town2.disk.Count; i++)
-            {
-                DrawDisks(Town2, Town2.disk[i]);
-            }
-            for (int i = 0; i < Town3.disk.Count; i++)
-            {
-                DrawDisks(Town3, Town3.disk[i]);
+                DrawDisks(towns[i]);
             }
 
-        }
-        
-        void DeleteDisks()
-        {
-            var images1 = image.Children.OfType<Image>().ToList(); //Все элементы типа Image в нашем подопытном canvas1
-            foreach (var image2 in images1)
-            {
-                if (image2.Name == "disk") //Соответствие на имя.
-                    image.Children.Remove(image2); //Удаляем
-            }
+            MoveDisks(towns, towns[0], towns[1], towns[2], 3);
+            DrawFinal(towns);
         }
 
-        //start - откуда кладем, end - куда кладем, temp - промежуточный диск, disks - кол-во дисков
-
-        void MoveDisks(Town start, Town temp, Town end, int disks)
+         void MoveDisks(Town[] towns, Town start, Town temp, Town end, int disks)
         {
-            if (disks > 1)
-            {
-                MoveDisks(start, end, temp, disks - 1);
-            }
-
-            end.disk.Add(start.disk[start.disk.Count - 1]);
-            start.disk.RemoveAt(start.disk.Count - 1);
 
             if (disks > 1)
             {
-                MoveDisks(temp, start, end, disks - 1);
+                MoveDisks(towns,start, end, temp, disks - 1);
+            }
+
+            end.sizeDisks.Add(start.sizeDisks[start.sizeDisks.Count - 1]); //(шаг №2)
+            start.sizeDisks.RemoveAt(start.sizeDisks.Count - 1);
+            
+            if (disks > 1)
+            {
+                MoveDisks(towns, temp, start, end, disks - 1);
+            }
+        }
+
+        private void DrawFinal(Town[] towns)
+        {
+            List<Polygon> deleteDiskLisk = new List<Polygon>();
+            foreach (Polygon child in image.Children)
+            {
+                if (child.Name == "disk")
+                {
+                    deleteDiskLisk.Add(child);
+                }
+            }
+            for (int i = 0; i < deleteDiskLisk.Count; i++)
+            {
+                image.Children.Remove(deleteDiskLisk[i]);
+            }
+            for (int i = 0; i < towns.Length; i++)
+            {
+                DrawDisks(towns[i]);
             }
         }
 
@@ -240,20 +228,25 @@ namespace HomeWork_2
             height.Fill = Brushes.Gray;
             image.Children.Add(height);
         }
-
-        private void DrawDisks(Town town, Disk disk)
+        private void DrawDisks(Town town)
         {
-            town.CountDisk++;
-            Polygon disks = new Polygon();
-            disks.Points.Add(new Point(town.x + 10 * disk.size, y - 25 - 20 * town.CountDisk));
-            disks.Points.Add(new Point(town.x + town.lengthTown - 10 * disk.size, y - 25 - 20 * town.CountDisk));
-            disks.Points.Add(new Point(town.x + town.lengthTown - 10 * disk.size, y - 45 - 20 * town.CountDisk));
-            disks.Points.Add(new Point(town.x + 10 * disk.size, y - 45 - 20 * town.CountDisk));
-            disks.Visibility = Visibility.Visible;
-            disks.Fill = Brushes.DarkBlue;
-            disks.Stroke = Brushes.DarkGreen;
-            disks.Name = "disk";
-            image.Children.Add(disks);
+            for (int i = 1; i <= town.sizeDisks.Count; i++)
+            {
+                town.CountDisk++;
+
+                Polygon disks = new Polygon();
+
+                disks.Points.Add(new Point(town.x + 10 * i, y - 25 - 20 * town.CountDisk));
+                disks.Points.Add(new Point(town.x + town.lengthTown - 10 * i, y - 25 - 20 * town.CountDisk));
+                disks.Points.Add(new Point(town.x + town.lengthTown - 10 * i, y - 45 - 20 * town.CountDisk));
+                disks.Points.Add(new Point(town.x + 10 * i, y - 45 - 20 * town.CountDisk));
+
+                disks.Visibility = Visibility.Visible;
+                disks.Fill = Brushes.DarkBlue;
+                disks.Stroke = Brushes.DarkGreen;
+                disks.Name = "disk";
+                image.Children.Add(disks);
+            }
         }
     }
 }
